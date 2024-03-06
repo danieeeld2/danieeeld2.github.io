@@ -1,26 +1,24 @@
 {
   "basics": {
-    "name": "Molly Maluhia",
-    "label": "Student",
-    "picture": "https://github.com/kambergjohnson.png",
-    "email": "molly@hawaii.edu",
-    "phone": "808-333-4444",
-    "website": "https://mmaluhia.github.io",
-    "summary": "I am studying for a B.S. in Computer Science in the Department of Information and Computer Sciences at the University of Hawaii. I expect to graduate in Spring, 2024.",
-    "location": { "address": "", "postalCode": "96822", "city": "Honolulu", "countryCode": "USA", "region": "Hawaii" },
+    "name": "Daniel Alconchel",
+    "label": "Maths + CS Student",
+    "picture": "https://github.com/danieeeld2.png",
+    "email": "danieeeld2",
+    "phone": "",
+    "website": "https://danieeeld2.github.io",
+    "summary": "I am studying Maths and Computer Since at University of Granada. I will graduate this year",
+    "location": { "address": "", "postalCode": "", "city": "Granada", "countryCode": "ES", "region": "" },
     "profiles": [
-      { "network": "github", "username": "mmaluhia", "url": "http://github.com/changeme" },
-      { "network": "linkedin", "username": "mollymaluhia", "url": "http://linkedin.com/in/changeme" },
-      { "network": "twitter", "username": "mollymal", "url": "http://twitter.com/changeme" },
-      { "network": "instagram", "username": "molly", "url": "http://instagram.com/changeme" }
+      { "network": "github", "username": "danieeeld2", "url": "http://github.com/danieeeld2" },
+      { "network": "linkedin", "username": "Daniel Alconchel", "url": "http://linkedin.com/in/daniel-alconchel-vázquez" }
     ]
   },
   "interests": [
-    { "name": "Interactive media" },
-    { "name": "Neuromorphic Computing" },
-    { "name": "Quantum Computing" },
-    { "name": "Robotics" },
-    { "name": "3D Graphics" }
+    { "name": "Cybersecurity" },
+    { "name": "Software Development" },
+    { "name": "Data Science" },
+    { "name": "Electronic Music" },
+    { "name": "Art" }
   ],
   "skills": [
     {

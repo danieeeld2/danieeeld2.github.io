@@ -32,7 +32,7 @@ you have total freedom, so you acquire much more knowledge than in any other,
 apart from the fact that it is more fun.
 
 Some of the knowledge learned is:
-  - GitHub Issues, Pull Requests and Actions
+  - GitHub Issues, Pull Requests, Reviews and Actions
   - Collaborative work
   - Tool choice
   - Testing

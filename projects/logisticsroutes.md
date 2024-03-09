@@ -21,9 +21,15 @@ This project was prepared for a university subject, but all the ideas and decisi
 <hr>
 
 <pre>
-The development of this project was very interesting, since, although it may seem strange, in the computer science degree (at the University of Granada) there are no subjects where free decision-making is allowed (they are all with a very closed script) and neither tools like GitHub are used.
+The development of this project was very interesting, since, 
+although it may seem strange, in the computer science degree (at the 
+University of Granada) there are no subjects where free decision-making 
+is allowed (they are all with a very closed script) and neither
+tools like GitHub are used.
 
-This is a very unique subject, different from any other in the degree, where you have total freedom, so you acquire much more knowledge than in any other, apart from the fact that it is more fun.
+This is a very unique subject, different from any other in the degree, where 
+you have total freedom, so you acquire much more knowledge than in any other, 
+apart from the fact that it is more fun.
 
 Some of the knowledge learned is:
   - GitHub Issues, Pull Requests and Actions

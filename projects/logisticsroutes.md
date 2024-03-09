@@ -12,7 +12,7 @@ labels:
 summary: "Optimal allocation of supplies to logistics fleets. This project is a free idea for the Virtual Infrastructure subject at UGR"
 ---
 
-<img class="img-fluid" src="../img/cotton/cotton-header.png">
+<img class="img-fluid" src="../img/logisticsroutes/logistic-header.png">
 
 First time carrying out a continuous integration project, with the Go language and the use of GitHub.
 
@@ -36,8 +36,9 @@ Some of the knowledge learned is:
   - Collaborative work
   - Tool choice
   - Testing
+  - Docker and DockerHub
   - Automatization
-  - CLI
+  - CI Tools
   - Correct project configuration
   - API REST
 </pre>

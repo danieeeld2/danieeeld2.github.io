@@ -23,12 +23,20 @@
   ],
   "skills": [
     {
-      "name": "Languages and Frameworks",
-      "keywords": [ "C", "C++", "Java", "Javascript", "Assembly", "Common Lisp" ]
+      "name": "Languages",
+      "keywords": [ "C", "C++", "Java", "Python", "Go", "Ruby", "JavaScript", "HTML+CSS", "SQL", "MongoDB" ]
     },
     {
-      "name": "Toolsets/OS",
-      "keywords": [ "MacOS", "Ubuntu", "Git/GitHub", "g++", "TI LaunchPad" ]
+      "name": "Frameworks",
+      "keywords": [ "Python-Django", "Java-AWT", "Python-MongoDB" ]
+    },
+    {
+      "name": "Toolsets",
+      "keywords": [ "Docker", "Linux", "Git/GitHub", "CI", "Bash" ]
+    },
+    {
+      "name": "Spoken Languages",
+      "keywords": [ "Spanish", "English" ]
     }
   ],
   "education": [

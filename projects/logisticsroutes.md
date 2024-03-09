@@ -3,7 +3,7 @@ layout: project
 type: project
 image: img/logisticsroutes/gopher-standing.png
 title: "Logistics Routes"
-date: 2024-01-07
+date: 2024
 published: true
 labels:
   - DevOps

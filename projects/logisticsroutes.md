@@ -9,7 +9,7 @@ labels:
   - DevOps
   - Go
   - GitHub
-summary: "Optimization of allocation of supplies to companies in logistics companies. This project is a free idea for the Virtual Infrastructure subject at UGR"
+summary: "Optimal allocation of supplies to logistics fleets. This project is a free idea for the Virtual Infrastructure subject at UGR"
 ---
 
 <img class="img-fluid" src="../img/cotton/cotton-header.png">

@@ -10,6 +10,8 @@ labels:
 summary: "Content of Maths+CS degree at University of Granada"
 ---
 
+<hr>
+
 Repository where I store all the work, notes and activities done related to the degree.
 
 <hr>

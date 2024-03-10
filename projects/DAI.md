@@ -16,6 +16,8 @@ summary: "Online shop with backend developed in python with django and front-end
 
 Online store project designed for the subject of Internet Application Design at the University of Granada.
 
+<img class="img-fluid" src="../img/django-react-app/app.jpg">
+
 The backend development was done using Python with the Django framework, while the fronted was done using Vite-React. It has a REST API for data management and the deployment was done locally, using docker and nginx
 
 <pre>

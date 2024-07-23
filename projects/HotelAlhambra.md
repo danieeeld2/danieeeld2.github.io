@@ -1,7 +1,7 @@
 ---
 layout: project
 type: project
-image: img/django-react-app/vite.png
+image: img/hotelalhambra/php.png
 title: "HotelAlhambra - HTML+CSS+PHP Project"
 date: 2024
 published: true

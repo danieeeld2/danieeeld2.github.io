@@ -24,7 +24,7 @@
   "skills": [
     {
       "name": "Languages",
-      "keywords": [ "C", "C++", "Java", "Python", "Go", "Ruby", "JavaScript", "HTML+CSS", "SQL", "MongoDB" ]
+      "keywords": [ "C", "C++", "Java", "Python", "Go", "Ruby", "JavaScript", "HTML+CSS", "PHP", "SQL", "MongoDB" ]
     },
     {
       "name": "Frameworks",

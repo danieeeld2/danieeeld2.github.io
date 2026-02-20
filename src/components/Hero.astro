@@ -1,0 +1,30 @@
+---
+interface Props {
+  hero: {
+    greeting: string;
+    name: string;
+    tagline: string;
+    description: string;
+    cta: string;
+  };
+  lang: string;
+}
+
+const { hero, lang } = Astro.props;
+---
+
+<section class="hero-banner">
+  <img src="/images/alhambra.jpg" alt="La Alhambra de Granada" loading="eager" />
+  <div class="absolute inset-0 flex items-end z-10">
+    <div class="max-w-5xl mx-auto px-6 pb-12 md:pb-16 w-full hero-text">
+      <p class="font-mono text-sm text-sand-100 mb-2 fade-in">{hero.greeting}</p>
+      <h1 class="font-display text-5xl md:text-7xl italic tracking-tight text-white mb-3 fade-in fade-in-delay-1">{hero.name}</h1>
+      <p class="font-mono text-base md:text-lg text-sand-200 mb-4 fade-in fade-in-delay-2">{hero.tagline}</p>
+      <p class="max-w-xl text-sand-200 leading-relaxed mb-6 fade-in fade-in-delay-3">{hero.description}</p>
+      <a href={`/${lang}/#about`} class="inline-flex items-center gap-2 font-mono text-sm px-5 py-2.5 rounded-full border border-white/80 text-white hover:bg-white hover:text-ink-900 transition-all duration-300 fade-in fade-in-delay-4">
+        {hero.cta}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>

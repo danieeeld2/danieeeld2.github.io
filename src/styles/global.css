@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply font-body text-ink-900 bg-sand-50 antialiased transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply text-sand-100 bg-ink-950;
+  }
+
+  ::selection {
+    @apply bg-sand-400/30;
+  }
+
+  .dark ::selection {
+    @apply bg-sand-500/30;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply font-display text-4xl md:text-5xl italic tracking-tight mb-8;
+  }
+
+  .card {
+    @apply bg-white/60 backdrop-blur-sm border border-sand-200 rounded-2xl p-6 md:p-8 transition-all duration-300;
+  }
+
+  .dark .card {
+    @apply bg-ink-900/60 border-ink-800;
+  }
+
+  .card:hover {
+    @apply border-sand-400 shadow-lg shadow-sand-200/50;
+  }
+
+  .dark .card:hover {
+    @apply border-ink-600 shadow-lg shadow-black/20;
+  }
+
+  .tag {
+    @apply inline-block text-xs font-mono px-2.5 py-1 rounded-full bg-sand-200/80 text-sand-700 transition-colors;
+  }
+
+  .dark .tag {
+    @apply bg-ink-800 text-sand-300;
+  }
+
+  .hero-banner {
+    @apply relative w-full h-[50vh] md:h-[60vh] overflow-hidden;
+  }
+
+  .hero-banner img {
+    @apply w-full h-full object-cover;
+    object-position: center 40%;
+  }
+
+  .hero-banner::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.35) 30%,
+      rgba(0, 0, 0, 0.55) 60%,
+      rgba(250, 248, 245, 0.85) 85%,
+      rgba(250, 248, 245, 1) 100%
+    );
+  }
+
+  .dark .hero-banner::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.35) 30%,
+      rgba(0, 0, 0, 0.6) 60%,
+      rgba(26, 26, 26, 0.9) 85%,
+      rgba(26, 26, 26, 1) 100%
+    );
+  }
+
+  .hero-text {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero-text a {
+    text-shadow: none;
+  }
+
+  /* Parallax-like subtle scroll effect via CSS */
+  .hero-banner img {
+    animation: subtleZoom 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes subtleZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+
+  .timeline-dot {
+    @apply w-3 h-3 rounded-full bg-sand-400 border-2 border-sand-50 absolute -left-[7px] top-2;
+  }
+
+  .dark .timeline-dot {
+    @apply bg-sand-500 border-ink-950;
+  }
+
+  /* Blog post styles */
+  .prose-blog h1 {
+    @apply font-display text-3xl md:text-4xl italic mb-6;
+  }
+
+  .prose-blog h2 {
+    @apply font-display text-2xl italic mt-10 mb-4;
+  }
+
+  .prose-blog p {
+    @apply leading-relaxed mb-4 text-ink-700;
+  }
+
+  .dark .prose-blog p {
+    @apply text-sand-200;
+  }
+
+  .prose-blog ul {
+    @apply list-disc pl-6 mb-4 space-y-1 text-ink-700;
+  }
+
+  .dark .prose-blog ul {
+    @apply text-sand-200;
+  }
+
+  .prose-blog code {
+    @apply font-mono text-sm bg-sand-200 px-1.5 py-0.5 rounded;
+  }
+
+  .dark .prose-blog code {
+    @apply bg-ink-800;
+  }
+
+  /* Nav blur */
+  .nav-blur {
+    @apply backdrop-blur-lg bg-sand-50/80 border-b border-sand-200/50;
+  }
+
+  .dark .nav-blur {
+    @apply bg-ink-950/80 border-ink-800/50;
+  }
+
+  /* Fade in animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .fade-in-delay-1 { animation-delay: 0.1s; }
+  .fade-in-delay-2 { animation-delay: 0.2s; }
+  .fade-in-delay-3 { animation-delay: 0.3s; }
+  .fade-in-delay-4 { animation-delay: 0.4s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Tech icons */
+  .tech-icon {
+    @apply h-7 w-7 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300;
+  }
+}

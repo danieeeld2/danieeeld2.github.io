@@ -1,0 +1,66 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Nav from '../../../components/Nav.astro';
+import Footer from '../../../components/Footer.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+import data from '../../../data/es.json';
+
+export function getStaticPaths() {
+  const blogDir = path.join(process.cwd(), 'src', 'content', 'blog', 'es');
+  if (!fs.existsSync(blogDir)) return [];
+  
+  const files = fs.readdirSync(blogDir).filter(f => f.endsWith('.md'));
+  return files.map(file => ({
+    params: { slug: file.replace('.md', '') },
+  }));
+}
+
+const { slug } = Astro.params;
+const filePath = path.join(process.cwd(), 'src', 'content', 'blog', 'es', `${slug}.md`);
+const content = fs.readFileSync(filePath, 'utf-8');
+
+const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+const frontmatter = frontmatterMatch?.[1] || '';
+const title = frontmatter.match(/title:\s*"(.+)"/)?.[1] || '';
+const date = frontmatter.match(/date:\s*"(.+)"/)?.[1] || '';
+
+const markdownBody = content.replace(/^---\n[\s\S]*?\n---\n/, '');
+
+// Simple markdown to HTML
+function mdToHtml(md: string): string {
+  return md
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    .replace(/^\- (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n?)+/g, (match) => `<ul>${match}</ul>`)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/`(.+?)`/g, '<code>$1</code>')
+    .replace(/^(?!<[hulo])((?!^\s*$).+)$/gm, '<p>$1</p>')
+    .replace(/\n{2,}/g, '\n');
+}
+
+const html = mdToHtml(markdownBody);
+const lang = 'es';
+---
+
+<Layout title={`${title} — Daniel Alconchel`} description={title} lang={lang}>
+  <Nav nav={data.nav} lang={lang} />
+  <main class="pt-28 pb-20">
+    <article class="max-w-3xl mx-auto px-6">
+      <a href={`/${lang}/#blog`} class="inline-flex items-center gap-2 text-sm font-mono text-sand-500 hover:text-sand-700 dark:hover:text-sand-300 mb-8 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/></svg>
+        Volver
+      </a>
+      <header class="mb-10">
+        <p class="font-mono text-sm text-sand-500 mb-3">{date}</p>
+        <h1 class="font-display text-4xl md:text-5xl italic tracking-tight">{title}</h1>
+      </header>
+      <div class="prose-blog" set:html={html} />
+    </article>
+  </main>
+  <Footer footer={data.footer} contact={data.contact} />
+</Layout>

@@ -1,0 +1,52 @@
+---
+interface Props {
+  hobbies: {
+    title: string;
+    items: {
+      icon: string;
+      title: string;
+      description: string;
+      link?: string;
+      linkText?: string;
+    }[];
+  };
+}
+
+const { hobbies } = Astro.props;
+
+const iconSvgs: Record<string, string> = {
+  music: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>`,
+  art: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg>`,
+  gaming: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875S10.5 3.089 10.5 4.125c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.491 48.491 0 01-4.163-.3c-1.18-.143-2.2.85-2.2 2.043v0c0 .946.607 1.78 1.497 2.076a20.098 20.098 0 003.48.963 48.091 48.091 0 01-.256 4.378c-.16 1.2.65 2.28 1.856 2.28h1.186c1.206 0 2.016-1.08 1.856-2.28a48.094 48.094 0 01-.256-4.378 20.098 20.098 0 003.48-.963A2.143 2.143 0 0017.77 8.47v0c0-1.193-1.02-2.186-2.2-2.043a48.491 48.491 0 01-4.163.3v0a.64.64 0 01-.657-.643v0z"/></svg>`,
+};
+---
+
+<section id="hobbies" class="py-20 md:py-28">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="section-heading observe-fade">{hobbies.title}</h2>
+    <div class="grid sm:grid-cols-3 gap-6">
+      {hobbies.items.map((hobby) => (
+        <div class="card observe-fade group">
+          <div class="w-12 h-12 rounded-xl bg-sand-100 dark:bg-ink-800 flex items-center justify-center mb-4 text-sand-600 dark:text-sand-400 group-hover:bg-sand-200 dark:group-hover:bg-ink-700 transition-colors">
+            <Fragment set:html={iconSvgs[hobby.icon] || iconSvgs.gaming} />
+          </div>
+          <h3 class="font-medium mb-2">{hobby.title}</h3>
+          <p class="text-sm text-ink-500 dark:text-sand-400 leading-relaxed">
+            {hobby.description}
+          </p>
+          {hobby.link && (
+            <a
+              href={hobby.link}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-1.5 mt-3 text-xs font-mono text-sand-500 hover:text-sand-700 dark:hover:text-sand-300 transition-colors"
+            >
+              {hobby.linkText || 'Link'}
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

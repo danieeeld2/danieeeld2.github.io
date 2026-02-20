@@ -1,0 +1,195 @@
+{
+  "meta": {
+    "title": "Daniel Alconchel — Data Engineer & Developer",
+    "description": "Personal portfolio of Daniel Alconchel. Data Engineer with interest in DevOps and Cloud."
+  },
+  "nav": {
+    "about": "About",
+    "cv": "Experience",
+    "projects": "Projects",
+    "blog": "Blog",
+    "switchLang": "ES"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Daniel Alconchel",
+    "tagline": "Data Engineer · DevOps enthusiast",
+    "description": "Computer Science & Mathematics graduate from the University of Granada. I build data pipelines and I'm interested in cloud infrastructure.",
+    "cta": "Get to know me"
+  },
+  "about": {
+    "title": "About me",
+    "paragraphs": [
+      "I'm a data engineer with a strong mathematical background, holding a double degree in Computer Science and Mathematics from the University of Granada. My experience spans ETL pipelines, big data processing, semantic models, and business intelligence.",
+      "Although my career has been focused on the data world, my real interest extends to DevOps and Cloud engineering. I'm driven by automation, scalable architectures, and everything related to containers, CI/CD, and infrastructure as code.",
+      "During my university years, I had the chance to do an Erasmus+ exchange at Politechnika Gdańska (Poland), where I deepened my knowledge in cryptography and algorithmics. That international experience shaped the way I work and think."
+    ],
+    "location": "San Fernando, Cádiz"
+  },
+  "hobbies": {
+    "title": "Beyond the code",
+    "items": [
+      {
+        "icon": "music",
+        "title": "Electronic music & mixing",
+        "description": "I'm interested in electronic music and digital sound. I experiment with mixing as a form of technical creativity, using a Pioneer DDJ-FLX4.",
+        "link": "https://soundcloud.com/daniel-alconchel",
+        "linkText": "SoundCloud"
+      },
+      {
+        "icon": "art",
+        "title": "Illustration",
+        "description": "I draw manga and caricatures as a creative counterpoint to technical work. Pen and paper remain a great way to disconnect."
+      },
+      {
+        "icon": "gaming",
+        "title": "Gaming",
+        "description": "Gamer in my spare time. I especially enjoy games with solid progression systems and well-crafted narratives."
+      }
+    ]
+  },
+  "cv": {
+    "title": "Experience",
+    "experience": {
+      "title": "Work Experience",
+      "items": [
+        {
+          "role": "Data Engineer",
+          "company": "Enagás",
+          "url": "https://www.enagas.es/",
+          "period": "Nov 2025 — May 2026",
+          "current": true,
+          "description": [
+            "Building end-to-end data pipelines in Microsoft Fabric using PySpark to transform and integrate operational data.",
+            "Designing and maintaining Lakehouses and Semantic Models for self-service analytics.",
+            "Delivering Power BI dashboards consumed by business stakeholders across the organization."
+          ]
+        },
+        {
+          "role": "Big Data Intern",
+          "company": "Nter Tech Services",
+          "url": "https://nter.es/",
+          "period": "Oct 2024 — Dec 2024",
+          "current": false,
+          "description": [
+            "Worked with Spark, PySpark, Hive, and SQL for ETL processes and data analytics.",
+            "Contributed to scalable data solutions and data lake maintenance.",
+            "Collaborated with agile teams to deliver data-driven solutions for clients."
+          ]
+        }
+      ]
+    },
+    "education": {
+      "title": "Education",
+      "items": [
+        {
+          "degree": "Double BSc. Computer Science & Mathematics",
+          "institution": "University of Granada",
+          "period": "Sep 2019 — Jun 2025",
+          "details": "369 ECTS. Key courses: Statistics, Data Management, Virtual Infrastructure (CI/CD), Differential Equations."
+        },
+        {
+          "degree": "Erasmus+",
+          "institution": "Politechnika Gdańska, Poland",
+          "period": "2022 — 2023",
+          "details": "Courses in Cryptography and Algorithmics."
+        }
+      ]
+    },
+    "skills": {
+      "title": "Skills",
+      "categories": [
+        {
+          "name": "Programming",
+          "items": [
+            "Python",
+            "R",
+            "SQL",
+            "Go",
+            "Java",
+            "C++",
+            "Bash",
+            "Ruby",
+            "PHP"
+          ]
+        },
+        {
+          "name": "Data & Cloud",
+          "items": [
+            "Spark",
+            "PySpark",
+            "Microsoft Fabric",
+            "Power BI",
+            "Azure",
+            "Hive",
+            "Docker",
+            "Git",
+            "CI/CD",
+            "MongoDB",
+            "PostgreSQL"
+          ]
+        },
+        {
+          "name": "Languages",
+          "items": [
+            "Spanish (Native)",
+            "English (B2 Cambridge)"
+          ]
+        }
+      ]
+    },
+    "awards": {
+      "title": "Awards",
+      "items": [
+        "Exchange Scholarship to Turku, Finland (2017)",
+        "Recognition of Academic Record, City Council of San Fernando (2019)"
+      ]
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "items": [
+      {
+        "name": "vASCA-R",
+        "url": "https://github.com/danieeeld2/vASCA-R",
+        "period": "Oct 2024 — May 2025",
+        "description": "R implementation of the VASCA algorithm for variable selection in high-dimensional datasets, particularly useful in biomarker discovery for genomic studies. Developed as my Bachelor's Thesis.",
+        "tags": [
+          "R",
+          "Docker",
+          "Go",
+          "CI/CD",
+          "Statistics"
+        ]
+      },
+      {
+        "name": "Logistics Routes",
+        "url": "https://github.com/danieeeld2/LogisticsRoutes",
+        "period": "Sep 2023 — Jan 2024",
+        "description": "Delivery route optimization app in Go considering traffic, vehicle dimensions, and priority constraints. Passed with honors in Virtual Infrastructure (UGR).",
+        "tags": [
+          "Go",
+          "Docker",
+          "CI/CD",
+          "Mage"
+        ]
+      }
+    ]
+  },
+  "blog": {
+    "title": "Blog",
+    "readMore": "Read more",
+    "empty": "Coming soon. I'm preparing my first posts."
+  },
+  "footer": {
+    "copyright": "Daniel Alconchel"
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "danieeeld2@gmail.com",
+    "phone": "+34 688 92 58 36",
+    "linkedin": "https://www.linkedin.com/in/daniel-alconchel-vázquez",
+    "github": "https://github.com/danieeeld2",
+    "website": "https://danieeeld2.github.io/"
+  }
+}

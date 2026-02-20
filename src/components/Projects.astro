@@ -1,0 +1,39 @@
+---
+interface Props {
+  projects: {
+    title: string;
+    items: {
+      name: string;
+      url: string;
+      period: string;
+      description: string;
+      tags: string[];
+    }[];
+  };
+}
+
+const { projects } = Astro.props;
+---
+
+<section id="projects" class="py-20 md:py-28">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="section-heading observe-fade">{projects.title}</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      {projects.items.map((project) => (
+        <a href={project.url} target="_blank" rel="noopener" class="card group observe-fade block">
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="text-lg font-medium group-hover:text-sand-600 dark:group-hover:text-sand-400 transition-colors">{project.name}</h3>
+            <svg class="w-4 h-4 text-ink-300 dark:text-sand-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+          <p class="text-sm font-mono text-ink-400 dark:text-sand-500 mb-3">{project.period}</p>
+          <p class="text-ink-600 dark:text-sand-300 text-sm leading-relaxed mb-4">{project.description}</p>
+          <div class="flex flex-wrap gap-2">
+            {project.tags.map((tag: string) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

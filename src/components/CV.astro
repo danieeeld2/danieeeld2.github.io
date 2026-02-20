@@ -1,0 +1,125 @@
+---
+interface Props {
+  cv: {
+    title: string;
+    experience: {
+      title: string;
+      items: {
+        role: string;
+        company: string;
+        url: string;
+        period: string;
+        current: boolean;
+        description: string[];
+      }[];
+    };
+    education: {
+      title: string;
+      items: {
+        degree: string;
+        institution: string;
+        period: string;
+        details: string;
+      }[];
+    };
+    skills: {
+      title: string;
+      categories: {
+        name: string;
+        items: string[];
+      }[];
+    };
+    awards: {
+      title: string;
+      items: string[];
+    };
+  };
+}
+
+const { cv } = Astro.props;
+---
+
+<section id="cv" class="py-20 md:py-28 bg-sand-100/50 dark:bg-ink-900/30">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="section-heading observe-fade">{cv.title}</h2>
+
+    <!-- Work Experience -->
+    <div class="mb-16 observe-fade">
+      <h3 class="font-mono text-sm uppercase tracking-widest text-sand-500 dark:text-sand-500 mb-8">{cv.experience.title}</h3>
+      <div class="relative border-l border-sand-300 dark:border-ink-700 ml-1.5 space-y-10">
+        {cv.experience.items.map((job) => (
+          <div class="pl-8 relative">
+            <div class="timeline-dot"></div>
+            {job.current && (
+              <span class="inline-block text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 mb-2">
+                Actual
+              </span>
+            )}
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-3">
+              <h4 class="text-lg font-medium">
+                {job.role} · <a href={job.url} target="_blank" rel="noopener" class="text-sand-600 dark:text-sand-400 hover:underline">{job.company}</a>
+              </h4>
+              <span class="text-sm font-mono text-ink-400 dark:text-sand-500 shrink-0">{job.period}</span>
+            </div>
+            <ul class="space-y-2">
+              {job.description.map((d: string) => (
+                <li class="text-ink-600 dark:text-sand-300 leading-relaxed text-sm flex gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-sand-400 mt-2 shrink-0"></span>
+                  <span>{d}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="mb-16 observe-fade">
+      <h3 class="font-mono text-sm uppercase tracking-widest text-sand-500 dark:text-sand-500 mb-8">{cv.education.title}</h3>
+      <div class="relative border-l border-sand-300 dark:border-ink-700 ml-1.5 space-y-8">
+        {cv.education.items.map((edu) => (
+          <div class="pl-8 relative">
+            <div class="timeline-dot"></div>
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+              <h4 class="text-lg font-medium">{edu.degree}</h4>
+              <span class="text-sm font-mono text-ink-400 dark:text-sand-500 shrink-0">{edu.period}</span>
+            </div>
+            <p class="text-sand-600 dark:text-sand-400 text-sm mb-1">{edu.institution}</p>
+            <p class="text-ink-500 dark:text-sand-400 text-sm leading-relaxed">{edu.details}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="mb-16 observe-fade">
+      <h3 class="font-mono text-sm uppercase tracking-widest text-sand-500 dark:text-sand-500 mb-8">{cv.skills.title}</h3>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {cv.skills.categories.map((cat) => (
+          <div class="card">
+            <h4 class="font-mono text-xs uppercase tracking-wider text-sand-500 mb-3">{cat.name}</h4>
+            <div class="flex flex-wrap gap-2">
+              {cat.items.map((item: string) => (
+                <span class="tag">{item}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Awards -->
+    <div class="observe-fade">
+      <h3 class="font-mono text-sm uppercase tracking-widest text-sand-500 dark:text-sand-500 mb-6">{cv.awards.title}</h3>
+      <div class="space-y-3">
+        {cv.awards.items.map((award: string) => (
+          <p class="text-ink-600 dark:text-sand-300 text-sm flex gap-2">
+            <span class="text-sand-400">✦</span>
+            {award}
+          </p>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

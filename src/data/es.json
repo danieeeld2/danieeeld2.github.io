@@ -1,0 +1,195 @@
+{
+  "meta": {
+    "title": "Daniel Alconchel — Data Engineer & Desarrollador",
+    "description": "Portfolio personal de Daniel Alconchel. Data Engineer con interés en DevOps y Cloud."
+  },
+  "nav": {
+    "about": "Sobre mí",
+    "cv": "Experiencia",
+    "projects": "Proyectos",
+    "blog": "Blog",
+    "switchLang": "EN"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "name": "Daniel Alconchel",
+    "tagline": "Data Engineer · DevOps enthusiast",
+    "description": "Graduado en Informática y Matemáticas por la Universidad de Granada. Construyo pipelines de datos y me interesa la infraestructura cloud.",
+    "cta": "Conóceme"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "paragraphs": [
+      "Soy un ingeniero de datos con una sólida base matemática, graduado del doble grado en Ingeniería Informática y Matemáticas por la Universidad de Granada. Mi experiencia abarca desde pipelines ETL y procesamiento de big data hasta modelos semánticos y business intelligence.",
+      "Aunque mi trayectoria profesional se ha centrado en el mundo del dato, mi verdadero interés se extiende al DevOps y la ingeniería Cloud. Me motiva la automatización, las arquitecturas escalables y todo lo que tenga que ver con contenedores, CI/CD e infraestructura como código.",
+      "Durante mi etapa universitaria, tuve la oportunidad de hacer un Erasmus+ en la Politechnika Gdańska (Polonia), donde profundicé en criptografía y algoritmia. Esa experiencia internacional marcó mi forma de trabajar y pensar."
+    ],
+    "location": "San Fernando, Cádiz"
+  },
+  "hobbies": {
+    "title": "Más allá del código",
+    "items": [
+      {
+        "icon": "music",
+        "title": "Música electrónica y mezcla",
+        "description": "Me interesa la música electrónica y el mundo del sonido digital. Experimento con mezcla como forma de creatividad técnica, usando una Pioneer DDJ-FLX4.",
+        "link": "https://soundcloud.com/daniel-alconchel",
+        "linkText": "SoundCloud"
+      },
+      {
+        "icon": "art",
+        "title": "Ilustración",
+        "description": "Dibujo manga y caricaturas como contrapunto creativo al trabajo técnico. El papel y el lápiz siguen siendo una buena forma de desconectar."
+      },
+      {
+        "icon": "gaming",
+        "title": "Videojuegos",
+        "description": "Gamer en mi tiempo libre. Me gustan especialmente los juegos con buenos sistemas de progresión y narrativa cuidada."
+      }
+    ]
+  },
+  "cv": {
+    "title": "Experiencia",
+    "experience": {
+      "title": "Experiencia Laboral",
+      "items": [
+        {
+          "role": "Data Engineer",
+          "company": "Enagás",
+          "url": "https://www.enagas.es/",
+          "period": "Nov 2025 — May 2026",
+          "current": true,
+          "description": [
+            "Construcción de pipelines de datos end-to-end en Microsoft Fabric con PySpark para transformar e integrar datos operacionales.",
+            "Diseño y mantenimiento de Lakehouses y modelos semánticos para habilitar analítica self-service.",
+            "Desarrollo de dashboards en Power BI consumidos por stakeholders de toda la organización."
+          ]
+        },
+        {
+          "role": "Big Data Intern",
+          "company": "Nter Tech Services",
+          "url": "https://nter.es/",
+          "period": "Oct 2024 — Dic 2024",
+          "current": false,
+          "description": [
+            "Trabajo con Spark, PySpark, Hive y SQL para procesos ETL y analítica de datos.",
+            "Contribución a soluciones escalables de datos y mantenimiento de data lakes.",
+            "Colaboración con equipos ágiles para entregar soluciones data-driven a clientes."
+          ]
+        }
+      ]
+    },
+    "education": {
+      "title": "Educación",
+      "items": [
+        {
+          "degree": "Doble Grado en Ingeniería Informática y Matemáticas",
+          "institution": "Universidad de Granada",
+          "period": "Sep 2019 — Jun 2025",
+          "details": "369 ECTS. Asignaturas clave: Estadística, Gestión de Datos, Infraestructura Virtual (CI/CD), Ecuaciones Diferenciales."
+        },
+        {
+          "degree": "Erasmus+",
+          "institution": "Politechnika Gdańska, Polonia",
+          "period": "2022 — 2023",
+          "details": "Cursos en Criptografía y Algoritmia."
+        }
+      ]
+    },
+    "skills": {
+      "title": "Habilidades",
+      "categories": [
+        {
+          "name": "Programación",
+          "items": [
+            "Python",
+            "R",
+            "SQL",
+            "Go",
+            "Java",
+            "C++",
+            "Bash",
+            "Ruby",
+            "PHP"
+          ]
+        },
+        {
+          "name": "Data & Cloud",
+          "items": [
+            "Spark",
+            "PySpark",
+            "Microsoft Fabric",
+            "Power BI",
+            "Azure",
+            "Hive",
+            "Docker",
+            "Git",
+            "CI/CD",
+            "MongoDB",
+            "PostgreSQL"
+          ]
+        },
+        {
+          "name": "Idiomas",
+          "items": [
+            "Español (Nativo)",
+            "Inglés (B2 Cambridge)"
+          ]
+        }
+      ]
+    },
+    "awards": {
+      "title": "Premios",
+      "items": [
+        "Beca de intercambio a Turku, Finlandia (2017)",
+        "Reconocimiento de expediente académico, Ayuntamiento de San Fernando (2019)"
+      ]
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "items": [
+      {
+        "name": "vASCA-R",
+        "url": "https://github.com/danieeeld2/vASCA-R",
+        "period": "Oct 2024 — May 2025",
+        "description": "Implementación en R del algoritmo VASCA para selección de variables en datasets de alta dimensionalidad, especialmente útil en descubrimiento de biomarcadores genómicos. Desarrollado como Trabajo de Fin de Grado.",
+        "tags": [
+          "R",
+          "Docker",
+          "Go",
+          "CI/CD",
+          "Estadística"
+        ]
+      },
+      {
+        "name": "Logistics Routes",
+        "url": "https://github.com/danieeeld2/LogisticsRoutes",
+        "period": "Sep 2023 — Ene 2024",
+        "description": "Aplicación de optimización de rutas de reparto en Go considerando tráfico, dimensiones de vehículos y restricciones de prioridad. Matrícula de Honor en Infraestructura Virtual (UGR).",
+        "tags": [
+          "Go",
+          "Docker",
+          "CI/CD",
+          "Mage"
+        ]
+      }
+    ]
+  },
+  "blog": {
+    "title": "Blog",
+    "readMore": "Leer más",
+    "empty": "Próximamente. Estoy preparando mis primeras publicaciones."
+  },
+  "footer": {
+    "copyright": "Daniel Alconchel"
+  },
+  "contact": {
+    "title": "Contacto",
+    "email": "danieeeld2@gmail.com",
+    "phone": "+34 688 92 58 36",
+    "linkedin": "https://www.linkedin.com/in/daniel-alconchel-vázquez",
+    "github": "https://github.com/danieeeld2",
+    "website": "https://danieeeld2.github.io/"
+  }
+}

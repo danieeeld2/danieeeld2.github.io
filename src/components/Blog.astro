@@ -13,34 +13,33 @@ interface Props {
 
 const { blog, lang } = Astro.props;
 
-// Read blog posts from markdown files
 function getBlogPosts(language: string) {
   const blogDir = path.join(process.cwd(), 'src', 'content', 'blog', language);
-  
   if (!fs.existsSync(blogDir)) return [];
-  
   const files = fs.readdirSync(blogDir).filter(f => f.endsWith('.md'));
-  
   return files.map(file => {
     const content = fs.readFileSync(path.join(blogDir, file), 'utf-8');
     const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-    
     if (!frontmatterMatch) return null;
-    
-    const frontmatter = frontmatterMatch[1];
-    const title = frontmatter.match(/title:\s*"(.+)"/)?.[1] || '';
-    const date = frontmatter.match(/date:\s*"(.+)"/)?.[1] || '';
-    const description = frontmatter.match(/description:\s*"(.+)"/)?.[1] || '';
-    const tagsMatch = frontmatter.match(/tags:\s*\[(.+)\]/)?.[1] || '';
+    const fm = frontmatterMatch[1];
+    const title = fm.match(/title:\s*"(.+)"/)?.[1] || '';
+    const date = fm.match(/date:\s*"(.+)"/)?.[1] || '';
+    const description = fm.match(/description:\s*"(.+)"/)?.[1] || '';
+    const tagsMatch = fm.match(/tags:\s*\[(.+)\]/)?.[1] || '';
     const tags = tagsMatch.split(',').map(t => t.trim().replace(/"/g, '')).filter(Boolean);
-    
     const slug = file.replace('.md', '');
-    
     return { title, date, description, tags, slug };
   }).filter(Boolean).sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 const posts = getBlogPosts(lang);
+const allTags = [...new Set(posts.flatMap((p: any) => p.tags))].sort();
+const PAGE_SIZE = 6;
+const totalPages = Math.ceil(posts.length / PAGE_SIZE);
+
+const prevLabel = lang === 'es' ? 'Anterior' : 'Previous';
+const nextLabel = lang === 'es' ? 'Siguiente' : 'Next';
+const allLabel = lang === 'es' ? 'Todos' : 'All';
 ---
 
 <section id="blog" class="py-20 md:py-28 bg-sand-100/50 dark:bg-ink-900/30">
@@ -50,27 +49,123 @@ const posts = getBlogPosts(lang);
     {posts.length === 0 ? (
       <p class="text-ink-400 dark:text-sand-500 italic observe-fade">{blog.empty}</p>
     ) : (
-      <div class="space-y-6">
-        {posts.map((post: any) => (
-          <a href={`/${lang}/blog/${post.slug}/`} class="card block group observe-fade">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-              <h3 class="text-lg font-medium group-hover:text-sand-600 dark:group-hover:text-sand-400 transition-colors">{post.title}</h3>
-              <span class="text-sm font-mono text-ink-400 dark:text-sand-500 shrink-0">{post.date}</span>
-            </div>
-            <p class="text-ink-600 dark:text-sand-300 text-sm leading-relaxed mb-3">{post.description}</p>
-            <div class="flex items-center gap-4">
-              <div class="flex gap-2">
-                {post.tags.map((tag: string) => (
-                  <span class="tag">{tag}</span>
-                ))}
+      <div>
+        {/* Tag filters */}
+        {allTags.length > 1 && (
+          <div class="flex flex-wrap gap-2 mb-8 observe-fade" id="blog-filters">
+            <button
+              data-filter="all"
+              class="tag-filter tag cursor-pointer !bg-ink-900 !text-sand-50 dark:!bg-sand-200 dark:!text-ink-900"
+            >
+              {allLabel}
+            </button>
+            {allTags.map((tag: string) => (
+              <button data-filter={tag} class="tag-filter tag cursor-pointer hover:bg-sand-300 dark:hover:bg-ink-700">
+                {tag}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Posts */}
+        <div class="space-y-6" id="blog-list">
+          {posts.map((post: any, i: number) => (
+            <a
+              href={`/${lang}/blog/${post.slug}/`}
+              class="card block group observe-fade blog-item"
+              data-tags={post.tags.join(',')}
+              data-index={i}
+            >
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                <h3 class="text-lg font-medium group-hover:text-sand-600 dark:group-hover:text-sand-400 transition-colors">{post.title}</h3>
+                <span class="text-sm font-mono text-ink-400 dark:text-sand-500 shrink-0">{post.date}</span>
               </div>
-              <span class="text-sm font-mono text-sand-500 group-hover:text-sand-700 dark:group-hover:text-sand-300 transition-colors ml-auto">
-                {blog.readMore} →
-              </span>
-            </div>
-          </a>
-        ))}
+              <p class="text-ink-600 dark:text-sand-300 text-sm leading-relaxed mb-3">{post.description}</p>
+              <div class="flex items-center gap-4">
+                <div class="flex gap-2">
+                  {post.tags.map((tag: string) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+                <span class="text-sm font-mono text-sand-500 group-hover:text-sand-700 dark:group-hover:text-sand-300 transition-colors ml-auto">
+                  {blog.readMore} →
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div class="flex items-center justify-center gap-4 mt-10" id="blog-pagination">
+            <button id="blog-prev" class="text-sm font-mono px-4 py-2 rounded-full border border-sand-300 dark:border-ink-700 hover:bg-sand-200 dark:hover:bg-ink-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed">
+              ← {prevLabel}
+            </button>
+            <span id="blog-page-info" class="text-sm font-mono text-ink-400 dark:text-sand-500"></span>
+            <button id="blog-next" class="text-sm font-mono px-4 py-2 rounded-full border border-sand-300 dark:border-ink-700 hover:bg-sand-200 dark:hover:bg-ink-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed">
+              {nextLabel} →
+            </button>
+          </div>
+        )}
       </div>
     )}
   </div>
 </section>
+
+<script is:inline define:vars={{ PAGE_SIZE }}>
+(function() {
+  const items = document.querySelectorAll('.blog-item');
+  const filters = document.querySelectorAll('#blog-filters .tag-filter');
+  const pagination = document.getElementById('blog-pagination');
+  const prevBtn = document.getElementById('blog-prev');
+  const nextBtn = document.getElementById('blog-next');
+  const pageInfo = document.getElementById('blog-page-info');
+
+  if (!items.length) return;
+
+  let activeTag = 'all';
+  let currentPage = 0;
+
+  function getVisible() {
+    return [...items].filter(item => {
+      if (activeTag === 'all') return true;
+      return item.dataset.tags.split(',').includes(activeTag);
+    });
+  }
+
+  function render() {
+    const visible = getVisible();
+    const pages = Math.ceil(visible.length / PAGE_SIZE);
+    if (currentPage >= pages) currentPage = Math.max(0, pages - 1);
+
+    items.forEach(item => item.style.display = 'none');
+    visible.forEach((item, i) => {
+      item.style.display = (i >= currentPage * PAGE_SIZE && i < (currentPage + 1) * PAGE_SIZE) ? '' : 'none';
+    });
+
+    if (pagination) {
+      pagination.style.display = pages > 1 ? 'flex' : 'none';
+      if (pageInfo) pageInfo.textContent = (currentPage + 1) + ' / ' + pages;
+      if (prevBtn) prevBtn.disabled = currentPage === 0;
+      if (nextBtn) nextBtn.disabled = currentPage >= pages - 1;
+    }
+  }
+
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeTag = btn.dataset.filter;
+      currentPage = 0;
+      filters.forEach(b => {
+        b.classList.remove('!bg-ink-900', '!text-sand-50', 'dark:!bg-sand-200', 'dark:!text-ink-900');
+      });
+      btn.classList.add('!bg-ink-900', '!text-sand-50', 'dark:!bg-sand-200', 'dark:!text-ink-900');
+      render();
+    });
+  });
+
+  if (prevBtn) prevBtn.addEventListener('click', () => { currentPage--; render(); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { currentPage++; render(); });
+
+  render();
+})();
+</script>

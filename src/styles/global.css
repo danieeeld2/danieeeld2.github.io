@@ -56,6 +56,7 @@
     @apply bg-ink-800 text-sand-300;
   }
 
+  /* Hero banner */
   .hero-banner {
     @apply relative w-full h-[50vh] md:h-[60vh] overflow-hidden;
   }
@@ -97,7 +98,6 @@
     text-shadow: none;
   }
 
-  /* Parallax-like subtle scroll effect via CSS */
   .hero-banner img {
     animation: subtleZoom 20s ease-in-out infinite alternate;
   }
@@ -107,6 +107,7 @@
     100% { transform: scale(1.05); }
   }
 
+  /* Timeline */
   .timeline-dot {
     @apply w-3 h-3 rounded-full bg-sand-400 border-2 border-sand-50 absolute -left-[7px] top-2;
   }
@@ -122,6 +123,10 @@
 
   .prose-blog h2 {
     @apply font-display text-2xl italic mt-10 mb-4;
+  }
+
+  .prose-blog h3 {
+    @apply font-display text-xl italic mt-8 mb-3;
   }
 
   .prose-blog p {
@@ -140,12 +145,53 @@
     @apply text-sand-200;
   }
 
+  .prose-blog ol {
+    @apply list-decimal pl-6 mb-4 space-y-1 text-ink-700;
+  }
+
+  .dark .prose-blog ol {
+    @apply text-sand-200;
+  }
+
+  .prose-blog strong {
+    @apply font-semibold;
+  }
+
+  .prose-blog a {
+    @apply text-sand-600 dark:text-sand-400 underline underline-offset-2 hover:text-sand-800 dark:hover:text-sand-200 transition-colors;
+  }
+
+  .prose-blog blockquote {
+    @apply border-l-2 border-sand-300 dark:border-ink-600 pl-4 my-4 italic text-ink-500 dark:text-sand-400;
+  }
+
+  .prose-blog hr {
+    @apply my-8 border-sand-200 dark:border-ink-800;
+  }
+
   .prose-blog code {
     @apply font-mono text-sm bg-sand-200 px-1.5 py-0.5 rounded;
   }
 
   .dark .prose-blog code {
     @apply bg-ink-800;
+  }
+
+  .prose-blog pre {
+    @apply bg-sand-100 dark:bg-ink-900 rounded-xl p-4 my-4 overflow-x-auto text-sm font-mono;
+  }
+
+  .prose-blog pre code {
+    @apply bg-transparent p-0;
+  }
+
+  /* Blog images — card style for technical diagrams */
+  .prose-blog img {
+    @apply rounded-xl my-6 max-w-full mx-auto block px-6 py-4 bg-white border border-sand-200;
+  }
+
+  .dark .prose-blog img {
+    @apply bg-white/95 border-ink-700;
   }
 
   /* Nav blur */

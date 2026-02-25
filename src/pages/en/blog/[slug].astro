@@ -4,6 +4,7 @@ import Nav from '../../../components/Nav.astro';
 import Footer from '../../../components/Footer.astro';
 import fs from 'node:fs';
 import path from 'node:path';
+import { marked } from 'marked';
 
 import data from '../../../data/en.json';
 
@@ -27,22 +28,7 @@ const title = frontmatter.match(/title:\s*"(.+)"/)?.[1] || '';
 const date = frontmatter.match(/date:\s*"(.+)"/)?.[1] || '';
 
 const markdownBody = content.replace(/^---\n[\s\S]*?\n---\n/, '');
-
-function mdToHtml(md: string): string {
-  return md
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-    .replace(/^\- (.+)$/gm, '<li>$1</li>')
-    .replace(/(<li>.*<\/li>\n?)+/g, (match) => `<ul>${match}</ul>`)
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/`(.+?)`/g, '<code>$1</code>')
-    .replace(/^(?!<[hulo])((?!^\s*$).+)$/gm, '<p>$1</p>')
-    .replace(/\n{2,}/g, '\n');
-}
-
-const html = mdToHtml(markdownBody);
+const html = await marked(markdownBody);
 const lang = 'en';
 ---
 

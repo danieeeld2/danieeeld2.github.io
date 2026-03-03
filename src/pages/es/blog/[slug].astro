@@ -2,6 +2,8 @@
 import Layout from '../../../layouts/Layout.astro';
 import Nav from '../../../components/Nav.astro';
 import Footer from '../../../components/Footer.astro';
+import AudioAnalyzer from '../../../components/AudioAnalyzer.jsx';
+import FFTPlayground from '../../../components/FFTPlayground.jsx';
 import fs from 'node:fs';
 import path from 'node:path';
 import { marked } from 'marked';
@@ -11,7 +13,6 @@ import data from '../../../data/es.json';
 export function getStaticPaths() {
   const blogDir = path.join(process.cwd(), 'src', 'content', 'blog', 'es');
   if (!fs.existsSync(blogDir)) return [];
-  
   const files = fs.readdirSync(blogDir).filter(f => f.endsWith('.md'));
   return files.map(file => ({
     params: { slug: file.replace('.md', '') },
@@ -28,7 +29,30 @@ const title = frontmatter.match(/title:\s*"(.+)"/)?.[1] || '';
 const date = frontmatter.match(/date:\s*"(.+)"/)?.[1] || '';
 
 const markdownBody = content.replace(/^---\n[\s\S]*?\n---\n/, '');
-const html = await marked(markdownBody);
+
+// Split at component markers
+const MARKERS = ['<AudioAnalyzer client:load />', '<FFTPlayground client:load />'];
+let segments = [markdownBody];
+for (const marker of MARKERS) {
+  const newSegments = [];
+  for (const seg of segments) {
+    if (typeof seg === 'string' && seg.includes(marker)) {
+      const parts = seg.split(marker);
+      parts.forEach((part, i) => {
+        newSegments.push(part);
+        if (i < parts.length - 1) newSegments.push({ component: marker });
+      });
+    } else {
+      newSegments.push(seg);
+    }
+  }
+  segments = newSegments;
+}
+
+const rendered = await Promise.all(
+  segments.map(seg => typeof seg === 'string' ? marked(seg) : Promise.resolve(seg))
+);
+
 const lang = 'es';
 ---
 
@@ -44,7 +68,14 @@ const lang = 'es';
         <p class="font-mono text-sm text-sand-500 mb-3">{date}</p>
         <h1 class="font-display text-4xl md:text-5xl italic tracking-tight">{title}</h1>
       </header>
-      <div class="prose-blog" set:html={html} />
+      <div class="prose-blog">
+        {rendered.map((seg, i) => {
+          if (typeof seg === 'string') return <Fragment key={i} set:html={seg} />;
+          if (seg.component === '<AudioAnalyzer client:load />') return <AudioAnalyzer key={i} client:load />;
+          if (seg.component === '<FFTPlayground client:load />') return <FFTPlayground key={i} client:load />;
+          return null;
+        })}
+      </div>
     </article>
   </main>
   <Footer footer={data.footer} contact={data.contact} />

@@ -36,9 +36,9 @@ In other words: **your ear hears the final result, but mathematics sees the sum 
 
 The series above assumes the sound is perfectly periodic. But electronic music is constantly evolving. That's why we need the **Fourier Transform (FT)**, which lets us move from the *time domain* to the *frequency domain*:
 
-$$X(f) = \int_{-\infty}^{\infty} x(t) \cdot e^{-j 2\pi f t} \, dt$$
+$$X(f) = \int_{-\infty}^{\infty} x(t) \cdot e^{-j 2\pi f t} dt$$
 
-The complex exponential $e^{-j 2\pi f t}$ (from **Euler's Identity**: $e^{i\theta} = \cos\theta + i\sin\theta$) acts as a "detector" for each frequency. If that frequency exists in your signal, the integral is large. If not, it's close to zero.
+The complex exponential $e^{-j 2\pi f t}$ (from **Euler's Identity**: $e^{j\theta} = \cos\theta + j\sin\theta$) acts as a "detector" for each frequency. If that frequency exists in your signal, the integral is large. If not, it's close to zero.
 
 **Result:** A graph where the X axis is frequency (Hz) and the Y axis is amplitude. It's what you see when you open a spectral analyzer in Ableton.
 
@@ -53,7 +53,7 @@ $$X[k] = \sum_{n=0}^{N-1} x[n] \cdot e^{-j \frac{2\pi}{N} k n}$$
 where:
 - $N$ is the size of your sample window
 - $x[n]$ is the amplitude of each sample
-- $X[k]$ is the "energy at frequency $k$"
+- $X[k]$ is the "energy at frequency $k$". Actualli, it is a complex number whose magnitude represents the amplitude and whose phase indicates the displacement of frequency $k$.
 
 The DFT is correct, but has $O(N^2)$ complexity. In 1965, Cooley and Tukey invented the **Fast Fourier Transform (FFT)**, using divide and conquer to reduce it to $O(N \log N)$. Every live FFT analyzer uses this algorithm.
 

@@ -1,22 +1,20 @@
 ---
-title: "Fourier y el Rugido del HardTechno: La Matemática detrás del Caos Sonoro"
-date: "2026-03-03"
-description: "Análisis riguroso de cómo la Transformada de Fourier explica la saturación en HardTechno/Schranz. Series de Fourier, THD, psicoacústica."
-tags: ["maths", "signal-processing", "music", "hardtechno"]
+title: "Fourier aplicado al HardTechno"
+date: "2026-03-04"
+description: "Análisis de cómo la Transformada de Fourier explica la saturación en HardTechno/Schranz. Series de Fourier, THD, psicoacústica."
+tags: ["maths", "signal-processing", "music"]
 lang: "es"
 ---
 
 # Fourier y el Rugido del HardTechno
 
-Tengo un hobby raro: estudio procesamiento de señales y FFTs en el trabajo, y luego me voy a una cabina a poner HardTechno a 160 BPM. La gente piensa que eso no tiene nada que ver. Yo creo que tiene TODO que ver.
+El otro día me planteé una pregunta sencilla: ¿cómo explicaría mi hobby — el techno — utilizando únicamente matemáticas? Más allá de la energía o la estética, lo que hay debajo es procesamiento de señales en estado puro.
 
-Cuando toco un set de Schranz, el kick no es un sonido simple — es un complejo ensamblaje de frecuencias que el cerebro percibe como una pared de sonido. Y puedo explicar exactamente por qué es tan adictivo usando matemática pura.
-
-Este post es para ingenieros que producen música, o para productores que quieren la teoría, no solo los botones.
+En este artículo analizo cómo conceptos como Series de Fourier, Transformada de Fourier, DFT/FFT y THD explican fenómenos muy concretos en la producción de música electrónica, en particular la saturación de kicks en estilos como el Schranz. La idea no es hablar de estética musical, sino de estructura espectral y generación de armónicos desde un punto de vista matemático.
 
 ---
 
-## 1. Series de Fourier: Descomponiendo el sonido
+## 1. Series de Fourier: Descomposición del sonido
 
 Imagina que tienes una grabación de un kick saturado en tu DAW. Ves una onda que sube y baja en el dominio del tiempo. Esta onda, aunque parezca compleja, es en realidad el resultado de muchas frecuencias sumadas.
 
@@ -61,7 +59,7 @@ La DFT es correcta, pero tiene complejidad $O(N^2)$. Por eso en 1965, Cooley y T
 
 ---
 
-## 4. El nacimiento de los armónicos: Senoide pura vs saturada
+## 4. El nacimiento de los armónicos: Senoide pura VS saturada
 
 Una **senoide pura**:
 
@@ -140,20 +138,6 @@ Sube dos tracks y compara su espectro y THD en tiempo real. El analizador tiene 
 Para ver la diferencia de forma clara, prueba con un kick de House limpio (ej. Fisher, Chris Lake) contra uno de HardTechno saturado (ej. Nico Moreno, RSJD). En modo Kick Analysis la diferencia de THD debería ser evidente.
 
 <AudioAnalyzer client:load />
-
----
-
-## 9. Conclusión: Orden dentro del caos
-
-La próxima vez que estés en la cabina tocando Schranz a 165 BPM:
-
-1. Tu oído detecta **centenares de frecuencias simultáneamente**
-2. La Transformada de Fourier descompone ese sonido en senoides constituyentes
-3. Los armónicos fueron **generados deliberadamente por saturación no lineal**
-4. El THD ~ 40-50% significa que casi la mitad de la energía está en armónicos
-5. Tu cerebro percibe esa densidad como **estimulación óptima**: orden dentro del caos
-
-**165 BPM. 100 Hz fundamental. THD = 45%. Infinitos armónicos.** Eso es Schranz.
 
 ---
 

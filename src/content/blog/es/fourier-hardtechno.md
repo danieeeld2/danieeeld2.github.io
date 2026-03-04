@@ -36,9 +36,9 @@ En otras palabras: **tu oído escucha el resultado final, pero la matemática ve
 
 La serie anterior asume que el sonido es perfectamente periódico. Pero una canción de electrónica va evolucionando constantemente. Por eso necesitamos la **Transformada de Fourier (FT)**, que nos permite pasar del *dominio del tiempo* al *dominio de la frecuencia*:
 
-$$X(f) = \int_{-\infty}^{\infty} x(t) \cdot e^{-j 2\pi f t} \, dt$$
+$$X(f) = \int_{-\infty}^{\infty} x(t) \cdot e^{-j 2\pi f t}  dt$$
 
-La exponencial compleja $e^{-j 2\pi f t}$ (que viene de la **Identidad de Euler**: $e^{i\theta} = \cos\theta + i\sin\theta$) actúa como un "detector" de cada frecuencia. Si esa frecuencia existe en tu señal, la integral es grande. Si no existe, es cercana a cero.
+La exponencial compleja $e^{-j 2\pi f t}$ (que viene de la **Identidad de Euler**: $e^{j\theta} = \cos\theta + j\sin\theta$) actúa como un "detector" de cada frecuencia. Si esa frecuencia existe en tu señal, la integral es grande. Si no existe, es cercana a cero.
 
 **Resultado:** Una gráfica donde el eje X es frecuencia (Hz) y el eje Y es amplitud. Es lo que ves cuando abres un analizador espectral en Ableton.
 
@@ -53,7 +53,7 @@ $$X[k] = \sum_{n=0}^{N-1} x[n] \cdot e^{-j \frac{2\pi}{N} k n}$$
 donde:
 - $N$ es el tamaño de tu ventana de samples
 - $x[n]$ es la amplitud de cada sample
-- $X[k]$ es la "cantidad de energía en la frecuencia $k$"
+- $X[k]$ es la "cantidad de energía en la frecuencia $k$". Estrictamente hablando, es un número complejo cuyo módulo representa la amplitud y cuya fase indica el desplazamiento de la frecuencia $k$.
 
 La DFT es correcta, pero tiene complejidad $O(N^2)$. Por eso en 1965, Cooley y Tukey inventaron la **Fast Fourier Transform (FFT)**, usando divide y vencerás para reducir a $O(N \log N)$. Cada analizador FFT en vivo usa este algoritmo.
 

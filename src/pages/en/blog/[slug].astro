@@ -4,6 +4,8 @@ import Nav from '../../../components/Nav.astro';
 import Footer from '../../../components/Footer.astro';
 import AudioAnalyzer from '../../../components/AudioAnalyzer.jsx';
 import FFTPlayground from '../../../components/FFTPlayground.jsx';
+import ConsistentHashPlayground from '../../../components/ConsistentHashPlayground.jsx';
+import JumpHashStepper from '../../../components/JumpHashStepper.jsx';
 import fs from 'node:fs';
 import path from 'node:path';
 import { marked } from 'marked';
@@ -30,7 +32,12 @@ const date = frontmatter.match(/date:\s*"(.+)"/)?.[1] || '';
 
 const markdownBody = content.replace(/^---\n[\s\S]*?\n---\n/, '');
 
-const MARKERS = ['<AudioAnalyzer client:load />', '<FFTPlayground client:load />'];
+const MARKERS = [
+  '<AudioAnalyzer client:load />',
+  '<FFTPlayground client:load />',
+  '<ConsistentHashPlayground client:load />',
+  '<JumpHashStepper client:load />'
+];
 let segments = [markdownBody];
 for (const marker of MARKERS) {
   const newSegments = [];
@@ -72,6 +79,8 @@ const lang = 'en';
           if (typeof seg === 'string') return <Fragment key={i} set:html={seg} />;
           if (seg.component === '<AudioAnalyzer client:load />') return <AudioAnalyzer key={i} client:load />;
           if (seg.component === '<FFTPlayground client:load />') return <FFTPlayground key={i} client:load />;
+          if (seg.component === '<ConsistentHashPlayground client:load />') return <ConsistentHashPlayground key={i} client:load />;
+          if (seg.component === '<JumpHashStepper client:load />') return <JumpHashStepper key={i} client:load />;
           return null;
         })}
       </div>

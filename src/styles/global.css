@@ -190,10 +190,43 @@
     white-space: nowrap;
   }
 
-  /* Blog images — card style for technical diagrams */
-  .prose-blog img {
-    @apply rounded-xl my-6 max-w-full mx-auto block px-6 py-4 bg-white border border-sand-200;
+  .prose-blog table {
+    @apply w-full my-6 text-sm border-collapse;
   }
+  
+  .prose-blog thead th {
+    @apply text-left font-mono font-semibold text-xs uppercase tracking-wider 
+           px-4 py-3 border-b-2 border-sand-300 text-ink-700;
+  }
+  
+  .dark .prose-blog thead th {
+    @apply border-ink-600 text-sand-300;
+  }
+  
+  .prose-blog tbody td {
+    @apply px-4 py-3 border-b border-sand-200 text-ink-600 align-top;
+  }
+  
+  .dark .prose-blog tbody td {
+    @apply border-ink-800 text-sand-300;
+  }
+  
+  .prose-blog tbody tr:last-child td {
+    @apply border-b-0;
+  }
+  
+  .prose-blog tbody tr:hover {
+    @apply bg-sand-100/50;
+  }
+  
+  .dark .prose-blog tbody tr:hover {
+    @apply bg-ink-800/30;
+  }
+  
+    /* Blog images — card style for technical diagrams */
+    .prose-blog img {
+      @apply rounded-xl my-6 max-w-full mx-auto block px-6 py-4 bg-white border border-sand-200;
+    }
 
   .dark .prose-blog img {
     @apply bg-white/95 border-ink-700;

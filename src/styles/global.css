@@ -185,6 +185,14 @@
     @apply bg-transparent p-0;
   }
 
+  /* Formulas LaTex */
+  .prose-blog .katex {
+    white-space: nowrap;
+    overflow-x: auto;
+    display: inline-block;
+    max-width: 100%;
+  }
+
   /* Blog images — card style for technical diagrams */
   .prose-blog img {
     @apply rounded-xl my-6 max-w-full mx-auto block px-6 py-4 bg-white border border-sand-200;

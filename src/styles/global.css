@@ -188,9 +188,6 @@
   /* Formulas LaTex */
   .prose-blog .katex {
     white-space: nowrap;
-    overflow-x: auto;
-    display: inline-block;
-    max-width: 100%;
   }
 
   /* Blog images — card style for technical diagrams */

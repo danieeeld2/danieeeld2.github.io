@@ -6,8 +6,6 @@ tags: ["distributed systems", "algorithms", "papers"]
 lang: "en"
 ---
 
-# Bloom Filters: When Being a Little Wrong Is the Best Option
-
 In 1970, Burton Bloom published a four-page paper with an unassuming title: *"Space/Time Trade-offs in Hash Coding with Allowable Errors"*. The core idea was surprisingly simple and, at the same time, heretical by the standards of the time: what if we give up absolute precision in exchange for using drastically less memory?
 
 Fifty-five years later, that idea is still alive in Bigtable, Cassandra, ScyllaDB, Redis, web browsers, and virtually every distributed system you're near. This post tells how an "imperfect" data structure ended up becoming a fundamental building block of modern infrastructure.

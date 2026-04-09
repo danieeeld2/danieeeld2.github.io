@@ -6,6 +6,8 @@ import AudioAnalyzer from '../../../components/AudioAnalyzer.jsx';
 import FFTPlayground from '../../../components/FFTPlayground.jsx';
 import ConsistentHashPlayground from '../../../components/ConsistentHashPlayground.jsx';
 import JumpHashStepper from '../../../components/JumpHashStepper.jsx';
+import BloomFilterPlayground from '../../../components/BloomFilterPlayground.jsx';
+import BloomOptimizer from '../../../components/BloomOptimizer.jsx';
 import fs from 'node:fs';
 import path from 'node:path';
 import { marked } from 'marked';
@@ -37,6 +39,8 @@ const MARKERS = [
   '<FFTPlayground client:load />',
   '<ConsistentHashPlayground client:load />',
   '<JumpHashStepper client:load />'
+  '<BloomFilterPlayground client:load />',
+  '<BloomOptimizer client:load />'
 ];
 let segments = [markdownBody];
 for (const marker of MARKERS) {
@@ -81,6 +85,8 @@ const lang = 'en';
           if (seg.component === '<FFTPlayground client:load />') return <FFTPlayground key={i} client:load />;
           if (seg.component === '<ConsistentHashPlayground client:load />') return <ConsistentHashPlayground key={i} client:load />;
           if (seg.component === '<JumpHashStepper client:load />') return <JumpHashStepper key={i} client:load />;
+          if (seg.component === '<BloomFilterPlayground client:load />') return <BloomFilterPlayground key={i} client:load />;
+          if (seg.component === '<BloomOptimizer client:load />') return <BloomOptimizer key={i} client:load />;
           return null;
         })}
       </div>

@@ -38,15 +38,19 @@ export default function BloomFilterPlayground() {
   const [falsePositiveCount, setFalsePositiveCount] = useState(0);
   const [testCount, setTestCount] = useState(0);
 
-  // Reset when m changes
+  // Rebuild bit array whenever m, k, or inserted items change
   useEffect(() => {
-    setBits(new Uint8Array(m));
-    setInsertedItems([]);
+    const newBits = new Uint8Array(m);
+    insertedItems.forEach(item => {
+      getHashPositions(item, k, m).forEach(p => { newBits[p] = 1; });
+    });
+    setBits(newBits);
     setHighlightedBits([]);
     setLastCheckResult(null);
+    // Reset FP counter since hash positions have changed
     setFalsePositiveCount(0);
     setTestCount(0);
-  }, [m]);
+  }, [m, k, insertedItems]);
 
   const addItem = useCallback(() => {
     if (!inputValue.trim()) return;
@@ -56,15 +60,12 @@ export default function BloomFilterPlayground() {
       return;
     }
     const positions = getHashPositions(item, k, m);
-    const newBits = new Uint8Array(bits);
-    positions.forEach(p => { newBits[p] = 1; });
-    setBits(newBits);
     setInsertedItems([...insertedItems, item]);
     setHighlightedBits(positions);
     setHighlightColor(COLORS.set);
     setInputValue('');
     setTimeout(() => setHighlightedBits([]), 1500);
-  }, [inputValue, insertedItems, k, m, bits]);
+  }, [inputValue, insertedItems, k, m]);
 
   const checkItem = useCallback(() => {
     if (!checkValue.trim()) return;
@@ -86,25 +87,12 @@ export default function BloomFilterPlayground() {
   }, [checkValue, k, m, bits, insertedItems]);
 
   const reset = useCallback(() => {
-    setBits(new Uint8Array(m));
     setInsertedItems([]);
-    setHighlightedBits([]);
-    setLastCheckResult(null);
-    setFalsePositiveCount(0);
-    setTestCount(0);
-  }, [m]);
+  }, []);
 
   const loadExample = useCallback(() => {
-    const words = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
-    const newBits = new Uint8Array(m);
-    words.forEach(w => {
-      getHashPositions(w, k, m).forEach(p => { newBits[p] = 1; });
-    });
-    setBits(newBits);
-    setInsertedItems(words);
-    setFalsePositiveCount(0);
-    setTestCount(0);
-  }, [k, m]);
+    setInsertedItems(['apple', 'banana', 'cherry', 'date', 'elderberry']);
+  }, []);
 
   // Theoretical false positive rate
   const n = insertedItems.length;

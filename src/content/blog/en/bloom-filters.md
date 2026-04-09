@@ -58,9 +58,9 @@ Differentiating with respect to $k$ and finding the minimum gives:
 
 $$k_{opt} = \frac{m}{n} \ln 2$$
 
-And substituting, the minimum false positive probability for an array of size $m$ and $n$ elements is approximately $0.6185^{m/n}$.
+And substituting, the minimum false positive probability for an array of size $m$ and $n$ elements is approximately $0.693^{m/n}$.
 
-The number $0.6185$ is one of those constants that appear out of nowhere and make you smile. Translated to the real world: with **10 bits per element** you get a false positive rate of ~1%. With **20 bits per element** it drops to ~0.01%. Every additional 10 bits gives you roughly two orders of magnitude of precision.
+The number $0.693$ is one of those constants that appear out of nowhere and make you smile. Translated to the real world: with **10 bits per element** you get a false positive rate of ~1%. With **20 bits per element** it drops to ~0.01%. Every additional 10 bits gives you roughly two orders of magnitude of precision.
 
 ---
 

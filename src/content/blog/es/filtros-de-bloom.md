@@ -58,9 +58,9 @@ Derivando respecto a $k$ y buscando el mínimo, se obtiene:
 
 $$k_{opt} = \frac{m}{n} \ln 2$$
 
-Y sustituyendo, la probabilidad mínima de falso positivo para un tamaño $m$ y $n$ elementos es aproximadamente $0.6185^{m/n}$.
+Y sustituyendo, la probabilidad mínima de falso positivo para un tamaño $m$ y $n$ elementos es aproximadamente $0.693^{m/n}$.
 
-El número $0.6185$ es una de esas constantes que aparecen de la nada y te hacen sonreír. Traducido al mundo real: con **10 bits por elemento** obtienes una tasa de falsos positivos del ~1%. Con **20 bits por elemento** baja al ~0.01%. Cada 10 bits adicionales te dan aproximadamente dos órdenes de magnitud de precisión.
+El número $0.693$ es una de esas constantes que aparecen de la nada y te hacen sonreír. Traducido al mundo real: con **10 bits por elemento** obtienes una tasa de falsos positivos del ~1%. Con **20 bits por elemento** baja al ~0.01%. Cada 10 bits adicionales te dan aproximadamente dos órdenes de magnitud de precisión.
 
 ---
 

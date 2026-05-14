@@ -6,8 +6,6 @@ tags: ["distributed systems", "databases", "papers", "data structures"]
 lang: "en"
 ---
 
-# LSM-Trees: how to stop fighting the disk
-
 In 1996, Patrick O'Neil, Edward Cheng, Dieter Gawlick and Elizabeth O'Neil published *The Log-Structured Merge-Tree (LSM-Tree)*. The motivation was mundane: transactional systems were inserting millions of log records per day and needed a queryable index in real time. The standard data structure for that job, the B-Tree, ate more than half of the system's I/O budget just keeping the index up to date.
 
 Ten years later, that same design shows up at the core of Bigtable (Google, 2006) and from there in Cassandra, ScyllaDB, RocksDB, LevelDB, HBase, ClickHouse, and pretty much every database built for write-heavy workloads. This post is about why it works.

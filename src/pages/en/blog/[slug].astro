@@ -36,6 +36,7 @@ const date = frontmatter.match(/date:\s*"(.+)"/)?.[1] || '';
 
 const markdownBody = content.replace(/^---\n[\s\S]*?\n---\n/, '');
 
+// Split at component markers
 const MARKERS = [
   '<AudioAnalyzer client:load />',
   '<FFTPlayground client:load />',
@@ -43,8 +44,8 @@ const MARKERS = [
   '<JumpHashStepper client:load />',
   '<BloomFilterPlayground client:load />',
   '<BloomOptimizer client:load />',
-  '<LSMVisualizer client:load />',  
-  '<LSMBenchmark client:load />',    
+  '<LSMVisualizer client:load />',
+  '<LSMBenchmark client:load />',
 ];
 
 let segments = [markdownBody];
@@ -64,8 +65,41 @@ for (const marker of MARKERS) {
   segments = newSegments;
 }
 
+// Protect $$...$$ and $...$ fragments from Markdown's parser (marked).
+// Replace them with opaque placeholders before marked runs, then restore
+// them in the resulting HTML. This way marked never touches underscores
+// or other LaTeX syntax inside math, and KaTeX (auto-render from the CDN
+// in Layout.astro) renders the formulas in the browser afterwards.
+function renderMarkdownWithMath(md) {
+  const mathFragments = [];
+  let counter = 0;
+
+  // Display math: $$...$$ (can be multiline)
+  let protectedMd = md.replace(/\$\$([\s\S]+?)\$\$/g, (_, expr) => {
+    const placeholder = `@@MATHBLOCK${counter}@@`;
+    mathFragments.push({ placeholder, replacement: `$$${expr}$$` });
+    counter++;
+    return placeholder;
+  });
+
+  // Inline math: $...$ (no line breaks, no $ inside)
+  protectedMd = protectedMd.replace(/\$([^\$\n]+?)\$/g, (_, expr) => {
+    const placeholder = `@@MATHINLINE${counter}@@`;
+    mathFragments.push({ placeholder, replacement: `$${expr}$` });
+    counter++;
+    return placeholder;
+  });
+
+  let html = marked(protectedMd);
+
+  for (const { placeholder, replacement } of mathFragments) {
+    html = html.replace(placeholder, replacement);
+  }
+  return html;
+}
+
 const rendered = await Promise.all(
-  segments.map(seg => typeof seg === 'string' ? marked(seg) : Promise.resolve(seg))
+  segments.map(seg => typeof seg === 'string' ? renderMarkdownWithMath(seg) : Promise.resolve(seg))
 );
 
 const lang = 'en';
@@ -93,7 +127,7 @@ const lang = 'en';
           if (seg.component === '<BloomFilterPlayground client:load />') return <BloomFilterPlayground key={i} client:load />;
           if (seg.component === '<BloomOptimizer client:load />') return <BloomOptimizer key={i} client:load />;
           if (seg.component === '<LSMVisualizer client:load />') return <LSMVisualizer key={i} client:load />;
-if (seg.component === '<LSMBenchmark client:load />')  return <LSMBenchmark  key={i} client:load />;
+          if (seg.component === '<LSMBenchmark client:load />') return <LSMBenchmark key={i} client:load />;
           return null;
         })}
       </div>

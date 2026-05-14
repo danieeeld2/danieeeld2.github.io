@@ -73,7 +73,7 @@ That $M$ is the **batching factor**. If your page holds 40 keys and the memtable
 
 The paper immediately generalizes the idea beyond two components. As $C_1$ grows, the $C_0 \rightarrow C_1$ merge becomes expensive again (because $C_1$ has many pages). The fix is to introduce intermediate levels: $C_0$ flushes to $C_1$, $C_1$ flushes to $C_2$, $C_2$ flushes to $C_3$, and so on.
 
-![LSM-Tree cascading levels from C₀ in RAM down to C₃ on disk, each level roughly 10× larger than the previous one](/images/lsm-cascade.svg)
+![LSM-Tree cascading levels from C₀ in RAM down to C₃ on disk, each level roughly 10× larger than the previous one](/images/blog/lsm-cascade.svg)
 
 Each level is typically 10 to 100 times larger than the previous one. The ratio between levels is called the *size ratio* or *fanout*, and it's named in various ways in modern descendants (in LevelDB and RocksDB it's `max_bytes_for_level_multiplier`, default 10).
 

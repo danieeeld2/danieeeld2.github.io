@@ -44,8 +44,8 @@ const MARKERS = [
   '<JumpHashStepper client:load />',
   '<BloomFilterPlayground client:load />',
   '<BloomOptimizer client:load />',
-  '<LSMVisualizer client:load />',   
-  '<LSMBenchmark client:load />',    
+  '<LSMVisualizer client:load />',
+  '<LSMBenchmark client:load />',
 ];
 
 let segments = [markdownBody];
@@ -65,8 +65,41 @@ for (const marker of MARKERS) {
   segments = newSegments;
 }
 
+// Protege fragmentos $$...$$ y $...$ del parser de Markdown (marked).
+// Los reemplaza por placeholders inocuos antes de marked y los restaura
+// en el HTML resultante. Así marked no toca los underscores ni el resto
+// de la sintaxis LaTeX, y luego KaTeX (auto-render del CDN en el Layout)
+// renderiza las fórmulas en el navegador.
+function renderMarkdownWithMath(md) {
+  const mathFragments = [];
+  let counter = 0;
+
+  // Display math: $$...$$ (puede ser multilínea)
+  let protectedMd = md.replace(/\$\$([\s\S]+?)\$\$/g, (_, expr) => {
+    const placeholder = `@@MATHBLOCK${counter}@@`;
+    mathFragments.push({ placeholder, replacement: `$$${expr}$$` });
+    counter++;
+    return placeholder;
+  });
+
+  // Inline math: $...$ (no salta líneas, no permite $ dentro)
+  protectedMd = protectedMd.replace(/\$([^\$\n]+?)\$/g, (_, expr) => {
+    const placeholder = `@@MATHINLINE${counter}@@`;
+    mathFragments.push({ placeholder, replacement: `$${expr}$` });
+    counter++;
+    return placeholder;
+  });
+
+  let html = marked(protectedMd);
+
+  for (const { placeholder, replacement } of mathFragments) {
+    html = html.replace(placeholder, replacement);
+  }
+  return html;
+}
+
 const rendered = await Promise.all(
-  segments.map(seg => typeof seg === 'string' ? marked(seg) : Promise.resolve(seg))
+  segments.map(seg => typeof seg === 'string' ? renderMarkdownWithMath(seg) : Promise.resolve(seg))
 );
 
 const lang = 'es';
@@ -94,7 +127,7 @@ const lang = 'es';
           if (seg.component === '<BloomFilterPlayground client:load />') return <BloomFilterPlayground key={i} client:load />;
           if (seg.component === '<BloomOptimizer client:load />') return <BloomOptimizer key={i} client:load />;
           if (seg.component === '<LSMVisualizer client:load />') return <LSMVisualizer key={i} client:load />;
-if (seg.component === '<LSMBenchmark client:load />')  return <LSMBenchmark  key={i} client:load />;
+          if (seg.component === '<LSMBenchmark client:load />') return <LSMBenchmark key={i} client:load />;
           return null;
         })}
       </div>

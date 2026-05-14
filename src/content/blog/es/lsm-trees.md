@@ -73,7 +73,7 @@ Esa $M$ es el **factor de batching**. Si tu página tiene espacio para 40 claves
 
 El paper generaliza inmediatamente la idea a más de dos niveles. Cuando $C_1$ se hace grande, el merge $C_0 \rightarrow C_1$ vuelve a ser caro (porque las páginas de $C_1$ son muchas). La solución es introducir niveles intermedios: $C_0$ vuelca a $C_1$, que vuelca a $C_2$, que vuelca a $C_3$, y así sucesivamente.
 
-![Cascada de niveles del LSM-Tree, desde C₀ en RAM hasta C₃ en disco, con cada nivel aproximadamente 10× más grande que el anterior](/images/lsm-cascade.svg)
+![Cascada de niveles del LSM-Tree, desde C₀ en RAM hasta C₃ en disco, con cada nivel aproximadamente 10× más grande que el anterior](/images/blog/lsm-cascade.svg)
 
 Cada nivel es típicamente entre 10 y 100 veces más grande que el anterior. La ratio entre niveles se llama *size ratio* o *fanout*, y aparece bautizada de muchas formas en los descendientes modernos del paper (en LevelDB y RocksDB es el parámetro `max_bytes_for_level_multiplier`, por defecto 10).
 

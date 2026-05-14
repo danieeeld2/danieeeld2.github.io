@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" role="img" aria-label="LSM-Tree cascading levels from C0 in RAM to C3 on disk">
+  <style>
+    .bg { fill: transparent; }
+    .label { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 13px; }
+    .level-label { font-family: 'Crimson Pro', Georgia, serif; font-style: italic; font-size: 18px; }
+    .tier-label { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .size-label { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; }
+    .axis-line { stroke-width: 1; stroke-dasharray: 2 3; }
+    .arrow { stroke-width: 1.5; fill: none; }
+    .arrowhead { stroke: none; }
+
+    /* Light mode (default) */
+    .text-primary { fill: #1c1917; }
+    .text-secondary { fill: #78716c; }
+    .axis-line { stroke: #d6d3d1; }
+    .arrow { stroke: #78716c; }
+    .arrowhead { fill: #78716c; }
+    .tri-c0 { fill: #c87533; }
+    .tri-c1 { fill: #5b8a72; opacity: 0.85; }
+    .tri-c2 { fill: #5b8a72; opacity: 0.7; }
+    .tri-c3 { fill: #5b8a72; opacity: 0.55; }
+    .ram-zone { fill: #c87533; opacity: 0.06; }
+    .disk-zone { fill: #5b8a72; opacity: 0.05; }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      .text-primary { fill: #fafaf9; }
+      .text-secondary { fill: #a8a29e; }
+      .axis-line { stroke: #44403c; }
+      .arrow { stroke: #a8a29e; }
+      .arrowhead { fill: #a8a29e; }
+      .tri-c0 { fill: #e08a4a; }
+      .tri-c1 { fill: #7da994; opacity: 0.9; }
+      .tri-c2 { fill: #7da994; opacity: 0.75; }
+      .tri-c3 { fill: #7da994; opacity: 0.6; }
+      .ram-zone { fill: #e08a4a; opacity: 0.08; }
+      .disk-zone { fill: #7da994; opacity: 0.07; }
+    }
+  </style>
+
+  <rect class="bg" width="800" height="280" />
+
+  <!-- Background zones: RAM vs DISK -->
+  <rect class="ram-zone" x="40" y="50" width="120" height="160" rx="4" />
+  <rect class="disk-zone" x="170" y="50" width="590" height="160" rx="4" />
+
+  <!-- Zone labels (top) -->
+  <text class="tier-label text-secondary" x="100" y="40" text-anchor="middle">RAM</text>
+  <text class="tier-label text-secondary" x="465" y="40" text-anchor="middle">Disk</text>
+
+  <!-- Baseline -->
+  <line class="axis-line" x1="40" y1="210" x2="760" y2="210" />
+
+  <!-- C0: small triangle, RAM, copper -->
+  <g transform="translate(100, 210)">
+    <polygon class="tri-c0" points="-18,0 18,0 0,-50" />
+    <text class="level-label text-primary" x="0" y="-60" text-anchor="middle">C₀</text>
+    <text class="size-label text-secondary" x="0" y="22" text-anchor="middle">~MB</text>
+  </g>
+
+  <!-- Arrow C0 → C1 -->
+  <g>
+    <path class="arrow" d="M 130 180 Q 165 165 200 180" />
+    <polygon class="arrowhead" points="200,180 194,176 194,184" />
+  </g>
+
+  <!-- C1: medium, disk -->
+  <g transform="translate(240, 210)">
+    <polygon class="tri-c1" points="-32,0 32,0 0,-80" />
+    <text class="level-label text-primary" x="0" y="-90" text-anchor="middle">C₁</text>
+    <text class="size-label text-secondary" x="0" y="22" text-anchor="middle">~10× C₀</text>
+  </g>
+
+  <!-- Arrow C1 → C2 -->
+  <g>
+    <path class="arrow" d="M 285 170 Q 335 155 385 170" />
+    <polygon class="arrowhead" points="385,170 379,166 379,174" />
+  </g>
+
+  <!-- C2: larger -->
+  <g transform="translate(430, 210)">
+    <polygon class="tri-c2" points="-50,0 50,0 0,-120" />
+    <text class="level-label text-primary" x="0" y="-130" text-anchor="middle">C₂</text>
+    <text class="size-label text-secondary" x="0" y="22" text-anchor="middle">~10× C₁</text>
+  </g>
+
+  <!-- Arrow C2 → C3 -->
+  <g>
+    <path class="arrow" d="M 495 160 Q 555 145 615 160" />
+    <polygon class="arrowhead" points="615,160 609,156 609,164" />
+  </g>
+
+  <!-- C3: largest -->
+  <g transform="translate(670, 210)">
+    <polygon class="tri-c3" points="-72,0 72,0 0,-160" />
+    <text class="level-label text-primary" x="0" y="-170" text-anchor="middle">C₃</text>
+    <text class="size-label text-secondary" x="0" y="22" text-anchor="middle">~10× C₂</text>
+  </g>
+
+  <!-- "..." trailing dots -->
+  <text class="label text-secondary" x="770" y="155" text-anchor="middle">…</text>
+
+  <!-- Caption -->
+  <text class="label text-secondary" x="400" y="260" text-anchor="middle">
+    rolling merge cascades: each level ~10× larger than the previous one
+  </text>
+</svg>

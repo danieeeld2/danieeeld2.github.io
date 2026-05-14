@@ -8,6 +8,8 @@ import ConsistentHashPlayground from '../../../components/ConsistentHashPlaygrou
 import JumpHashStepper from '../../../components/JumpHashStepper.jsx';
 import BloomFilterPlayground from '../../../components/BloomFilterPlayground.jsx';
 import BloomOptimizer from '../../../components/BloomOptimizer.jsx';
+import LSMVisualizer from '../../../components/LSMVisualizer.jsx';
+import LSMBenchmark from '../../../components/LSMBenchmark.jsx';
 import fs from 'node:fs';
 import path from 'node:path';
 import { marked } from 'marked';
@@ -41,8 +43,11 @@ const MARKERS = [
   '<ConsistentHashPlayground client:load />',
   '<JumpHashStepper client:load />',
   '<BloomFilterPlayground client:load />',
-  '<BloomOptimizer client:load />'
+  '<BloomOptimizer client:load />',
+  '<LSMVisualizer client:load />',   
+  '<LSMBenchmark client:load />',    
 ];
+
 let segments = [markdownBody];
 for (const marker of MARKERS) {
   const newSegments = [];
@@ -88,6 +93,8 @@ const lang = 'es';
           if (seg.component === '<JumpHashStepper client:load />') return <JumpHashStepper key={i} client:load />;
           if (seg.component === '<BloomFilterPlayground client:load />') return <BloomFilterPlayground key={i} client:load />;
           if (seg.component === '<BloomOptimizer client:load />') return <BloomOptimizer key={i} client:load />;
+          if (seg.component === '<LSMVisualizer client:load />') return <LSMVisualizer key={i} client:load />;
+if (seg.component === '<LSMBenchmark client:load />')  return <LSMBenchmark  key={i} client:load />;
           return null;
         })}
       </div>

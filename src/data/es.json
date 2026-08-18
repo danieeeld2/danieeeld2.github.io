@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Daniel Alconchel — Data Engineer & Desarrollador",
-    "description": "Portfolio personal de Daniel Alconchel. Data Engineer con interés en DevOps y Cloud."
+    "title": "Daniel Alconchel — Infrastructure & Cloud Engineer",
+    "description": "Portfolio personal de Daniel Alconchel. Ingeniero de Infraestructura y Cloud: AWS, Terraform, Docker, CI/CD y automatización."
   },
   "nav": {
     "about": "Sobre mí",
@@ -13,15 +13,15 @@
   "hero": {
     "greeting": "Hola, soy",
     "name": "Daniel Alconchel",
-    "tagline": "Data Engineer · DevOps enthusiast",
-    "description": "Graduado en Informática y Matemáticas por la Universidad de Granada. Construyo pipelines de datos y me interesa la infraestructura cloud.",
+    "tagline": "Infrastructure & Cloud Engineer · AWS · Terraform",
+    "description": "Graduado en Informática y Matemáticas por la Universidad de Granada. Automatizo infraestructura con Terraform y AWS, y construyo pipelines reproducibles con Docker y CI/CD.",
     "cta": "Conóceme"
   },
   "about": {
     "title": "Sobre mí",
     "paragraphs": [
-      "Soy un ingeniero de datos con una sólida base matemática, graduado del doble grado en Ingeniería Informática y Matemáticas por la Universidad de Granada. Mi experiencia abarca desde pipelines ETL y procesamiento de big data hasta modelos semánticos y business intelligence.",
-      "Aunque mi trayectoria profesional se ha centrado en el mundo del dato, mi verdadero interés se extiende al DevOps y la ingeniería Cloud. Me motiva la automatización, las arquitecturas escalables y todo lo que tenga que ver con contenedores, CI/CD e infraestructura como código.",
+      "Soy ingeniero de infraestructura y cloud con una sólida base matemática, graduado del doble grado en Ingeniería Informática y Matemáticas por la Universidad de Granada. Mi trabajo gira en torno a la automatización: infraestructura como código, contenedores y pipelines CI/CD.",
+      "Actualmente trabajo hands-on con AWS (Lambda, RDS, EC2, IAM) y Terraform, construyendo infraestructura reproducible de principio a fin, mientras preparo la certificación AWS Solutions Architect Associate. Mi trasfondo en ingeniería de datos (Spark, SQL, Microsoft Fabric) me da una visión completa del ciclo de vida del dato y de la infraestructura que lo soporta.",
       "Durante mi etapa universitaria, tuve la oportunidad de hacer un Erasmus+ en la Politechnika Gdańska (Polonia), donde profundicé en criptografía y algoritmia. Esa experiencia internacional marcó mi forma de trabajar y pensar."
     ],
     "location": "San Fernando, Cádiz"
@@ -52,17 +52,18 @@
     "title": "Experiencia",
     "experience": {
       "title": "Experiencia Laboral",
+      "currentLabel": "Actual",
       "items": [
         {
-          "role": "Data Engineer",
+          "role": "Infrastructure & Data Engineer",
           "company": "Enagás",
           "url": "https://www.enagas.es/",
-          "period": "Nov 2025 — May 2026",
+          "period": "Nov 2025 — Actualidad",
           "current": true,
           "description": [
-            "Construcción de pipelines de datos end-to-end en Microsoft Fabric con PySpark para transformar e integrar datos operacionales.",
-            "Diseño y mantenimiento de Lakehouses y modelos semánticos para habilitar analítica self-service.",
-            "Desarrollo de dashboards en Power BI consumidos por stakeholders de toda la organización."
+            "Desarrollo de scripts de automatización en Python y PowerShell para orquestación de workflows y pipelines de despliegue, reduciendo el esfuerzo manual en un 60%.",
+            "Construcción de entornos containerizados y reproducibles con Docker para una ejecución consistente entre desarrollo y producción.",
+            "Diseño de pipelines de datos modulares y escalables en Microsoft Fabric, con validación automática, manejo de errores y monitorización de rendimiento en el sector energético regulado."
           ]
         },
         {
@@ -100,33 +101,59 @@
       "title": "Habilidades",
       "categories": [
         {
-          "name": "Programación",
+          "name": "Infraestructura & Cloud",
           "items": [
-            "Python",
-            "R",
-            "SQL",
-            "Go",
-            "Java",
-            "C++",
-            "Bash",
-            "Ruby",
-            "PHP"
+            "AWS (Lambda, RDS, EC2, IAM)",
+            "Terraform",
+            "Docker",
+            "Docker Compose",
+            "Linux",
+            "Azure (fundamentos)"
           ]
         },
         {
-          "name": "Data & Cloud",
+          "name": "Automatización & CI/CD",
+          "items": [
+            "GitHub Actions",
+            "CI/CD",
+            "Bash",
+            "PowerShell",
+            "Git",
+            "Orquestación de workflows"
+          ]
+        },
+        {
+          "name": "Data Engineering",
           "items": [
             "Spark",
             "PySpark",
+            "SQL",
             "Microsoft Fabric",
             "Power BI",
-            "Azure",
-            "Hive",
-            "Docker",
-            "Git",
-            "CI/CD",
+            "PostgreSQL",
             "MongoDB",
-            "PostgreSQL"
+            "Hive"
+          ]
+        },
+        {
+          "name": "Programación",
+          "items": [
+            "Python",
+            "Go",
+            "C++",
+            "Java",
+            "R"
+          ]
+        },
+        {
+          "name": "Otros",
+          "items": [
+            "Kubernetes (fundamentos)",
+            "Nginx",
+            "Grafana",
+            "Ansible (básico)",
+            "Ruby",
+            "PHP"
           ]
         },
         {
@@ -153,23 +180,24 @@
         "name": "vASCA-R",
         "url": "https://github.com/danieeeld2/vASCA-R",
         "period": "Oct 2024 — May 2025",
-        "description": "Implementación en R del algoritmo VASCA para selección de variables en datasets de alta dimensionalidad, especialmente útil en descubrimiento de biomarcadores genómicos. Desarrollado como Trabajo de Fin de Grado.",
+        "description": "Framework de validación de software con infraestructura de nivel producción: 40+ tests automatizados, CI/CD con GitHub Actions y containerización Docker. Implementación en R del algoritmo VASCA para selección de variables en datasets de alta dimensionalidad. Desarrollado como Trabajo de Fin de Grado.",
         "tags": [
           "R",
           "Docker",
           "Go",
           "CI/CD",
-          "Estadística"
+          "Testing"
         ]
       },
       {
         "name": "Logistics Routes",
         "url": "https://github.com/danieeeld2/LogisticsRoutes",
         "period": "Sep 2023 — Ene 2024",
-        "description": "Aplicación de optimización de rutas de reparto en Go considerando tráfico, dimensiones de vehículos y restricciones de prioridad. Matrícula de Honor en Infraestructura Virtual (UGR).",
+        "description": "Pipeline CI/CD end-to-end con GitHub Actions, Docker, testing automatizado y despliegue reproducible. Aplicación de optimización de rutas de reparto en Go considerando tráfico y restricciones de prioridad. Matrícula de Honor en Infraestructura Virtual (UGR).",
         "tags": [
           "Go",
           "Docker",
+          "GitHub Actions",
           "CI/CD",
           "Mage"
         ]

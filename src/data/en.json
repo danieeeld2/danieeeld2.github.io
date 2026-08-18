@@ -20,9 +20,9 @@
   "about": {
     "title": "About me",
     "paragraphs": [
-      "I'm an infrastructure and cloud engineer with a strong mathematical background, holding a double degree in Computer Science and Mathematics from the University of Granada. My work revolves around automation: infrastructure as code, containers, and CI/CD pipelines.",
-      "I currently work hands-on with AWS (Lambda, RDS, EC2, IAM) and Terraform, building reproducible infrastructure end to end, while preparing for the AWS Solutions Architect Associate certification. My data engineering background (Spark, SQL, Microsoft Fabric) gives me a complete view of the data lifecycle and the infrastructure that supports it.",
-      "During my university years, I had the chance to do an Erasmus+ exchange at Politechnika Gdańska (Poland), where I deepened my knowledge in cryptography and algorithmics. That international experience shaped the way I work and think."
+      "I’m an Infrastructure & Data Engineer with a strong mathematical background, holding a double degree in Computer Science and Mathematics from the University of Granada. My professional experience combines data engineering with infrastructure, automation, and software development, including ETL pipelines, big data processing, containerization, and CI/CD.",
+      "Over time, I’ve developed a strong focus on Cloud and DevOps, working with technologies such as AWS, Terraform, Docker, and GitHub Actions. I’m particularly interested in automation, infrastructure as code, scalable architectures, and building reliable and reproducible systems.",
+      "During my university years, I also had the opportunity to take part in an Erasmus+ exchange at Politechnika Gdańska in Poland, where I deepened my knowledge of cryptography and algorithmics. That international experience broadened my perspective and taught me to adapt to different environments and ways of working."
     ],
     "location": "San Fernando, Cádiz"
   },

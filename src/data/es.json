@@ -20,9 +20,9 @@
   "about": {
     "title": "Sobre mí",
     "paragraphs": [
-      "Soy ingeniero de infraestructura y cloud con una sólida base matemática, graduado del doble grado en Ingeniería Informática y Matemáticas por la Universidad de Granada. Mi trabajo gira en torno a la automatización: infraestructura como código, contenedores y pipelines CI/CD.",
-      "Actualmente trabajo hands-on con AWS (Lambda, RDS, EC2, IAM) y Terraform, construyendo infraestructura reproducible de principio a fin, mientras preparo la certificación AWS Solutions Architect Associate. Mi trasfondo en ingeniería de datos (Spark, SQL, Microsoft Fabric) me da una visión completa del ciclo de vida del dato y de la infraestructura que lo soporta.",
-      "Durante mi etapa universitaria, tuve la oportunidad de hacer un Erasmus+ en la Politechnika Gdańska (Polonia), donde profundicé en criptografía y algoritmia. Esa experiencia internacional marcó mi forma de trabajar y pensar."
+      "Soy Ingeniero de Datos e Infraestructura, con una sólida base matemática y una doble titulación en Ingeniería Informática y Matemáticas por la Universidad de Granada. Mi experiencia profesional combina ingeniería de datos con infraestructura, automatización y desarrollo de software, trabajando con pipelines ETL, procesamiento de grandes volúmenes de datos, contenedores y CI/CD.",
+      "Con el tiempo, he desarrollado un especial interés por el ámbito Cloud y DevOps, adquiriendo experiencia con tecnologías como AWS, Terraform, Docker y GitHub Actions. Me interesa especialmente la automatización, la infraestructura como código, las arquitecturas escalables y la construcción de sistemas fiables y reproducibles.",
+      "Durante mi etapa universitaria también tuve la oportunidad de realizar un Erasmus+ en la Politechnika Gdańska (Polonia), donde profundicé en criptografía y algoritmia. Esta experiencia internacional amplió mi perspectiva y me enseñó a adaptarme a diferentes entornos y formas de trabajo."
     ],
     "location": "San Fernando, Cádiz"
   },

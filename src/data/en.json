@@ -177,6 +177,18 @@
     "title": "Projects",
     "items": [
       {
+        "name": "SoundCloud Analytics Pipeline",
+        "url": "https://github.com/danieeeld2/Music-Analytics-Platform",
+        "period": "Sep 2026",
+        "description": "Serverless AWS pipeline that fetches my SoundCloud stats every day and renders them on a Grafana dashboard. Infrastructure provisioned with Terraform (Lambda, RDS Postgres, EventBridge, Secrets Manager), deployed on-demand to keep costs close to zero.",
+        "tags": [
+          "AWS",
+          "Terraform",
+          "Lambda",
+          "Grafana"
+        ]
+      },
+      {
         "name": "vASCA-R",
         "url": "https://github.com/danieeeld2/vASCA-R",
         "period": "Oct 2024 — May 2025",
